@@ -1,0 +1,21 @@
+# CHRONON-1 Protocol Configuration
+
+# Analysis Parameters
+window_seconds: 120
+detection_sigma: 5
+witness_Y_threshold: 1.5e-18
+veto_covariate_threshold: 0.7
+delta_h_blind_key: "default_blind_key_replace_me"
+
+# HAC Settings (Andrews)
+andrews_bandwidth_policy: "auto"
+bootstrap_n: 2000
+
+# Constants
+c: 299792458.0  # m/s
+g_nominal: 9.81 # m/s^2 (will use local g from data if available)
+
+# Paths
+raw_data_dir: "data/raw"
+processed_data_dir: "data/processed"
+ledger_path: "ledger/runs_ledger.csv"

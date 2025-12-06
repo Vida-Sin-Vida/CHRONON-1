@@ -1,0 +1,16 @@
+{
+  "blinding_event": null,
+  "code_hash": "TEST_CODE",
+  "config_hash": "TEST_CONFIG",
+  "dataset": "D2",
+  "fallback": false,
+  "fallback_reasons": [],
+  "meta_timestamp": "2025-12-05T21:56:50.241821",
+  "model": "DEMING_WTLS",
+  "operator": "Unknown",
+  "pval": 0.0885032932914378,
+  "run_verdict": "NULL",
+  "scenario": "S2 (Weak)",
+  "slope_est": 0.00029640723980826927,
+  "slope_true": 0.0001
+}

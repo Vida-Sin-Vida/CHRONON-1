@@ -1,0 +1,16 @@
+{
+  "blinding_event": null,
+  "code_hash": "TEST_CODE",
+  "config_hash": "TEST_CONFIG",
+  "dataset": "D1",
+  "fallback": false,
+  "fallback_reasons": [],
+  "meta_timestamp": "2025-12-05T21:54:00.053314",
+  "model": "WLS_HAC",
+  "operator": "Unknown",
+  "pval": 0.37544740747942873,
+  "run_verdict": "NULL",
+  "scenario": "S2 (Weak)",
+  "slope_est": -0.0013999812587657734,
+  "slope_true": 0.0001
+}

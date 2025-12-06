@@ -1,0 +1,18 @@
+{
+  "blinding_event": null,
+  "code_hash": "TEST_CODE",
+  "config_hash": "TEST_CONFIG",
+  "dataset": "D1",
+  "fallback": true,
+  "fallback_reasons": [
+    "Breusch-Pagan p<0.01"
+  ],
+  "meta_timestamp": "2025-12-05T21:53:59.568833",
+  "model": "WLS_HAC + WILD_BOOTSTRAP",
+  "operator": "Unknown",
+  "pval": 0.3059122243745711,
+  "run_verdict": "NULL",
+  "scenario": "S1 (Null)",
+  "slope_est": -0.0017537014048851923,
+  "slope_true": 0.0
+}

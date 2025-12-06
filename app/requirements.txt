@@ -1,0 +1,11 @@
+fastapi>=0.68.0
+uvicorn>=0.15.0
+python-multipart>=0.0.5
+websockets
+# Core dependencies already in setup.py potentially, but listing here for interface env
+numpy
+pandas
+scipy
+customtkinter
+packaging
+matplotlib

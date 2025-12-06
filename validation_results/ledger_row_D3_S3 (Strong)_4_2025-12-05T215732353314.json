@@ -1,0 +1,18 @@
+{
+  "blinding_event": null,
+  "code_hash": "TEST_CODE",
+  "config_hash": "TEST_CONFIG",
+  "dataset": "D3",
+  "fallback": true,
+  "fallback_reasons": [
+    "Ljung-Box p<0.01"
+  ],
+  "meta_timestamp": "2025-12-05T21:57:32.353314",
+  "model": "WLS_HAC + WILD_BOOTSTRAP",
+  "operator": "Unknown",
+  "pval": 3.6415315207705135e-13,
+  "run_verdict": "DETECTED",
+  "scenario": "S3 (Strong)",
+  "slope_est": 0.0012287090073579499,
+  "slope_true": 0.001
+}
