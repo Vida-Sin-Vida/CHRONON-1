@@ -1,3 +1,9 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17842188.svg)](https://doi.org/10.5281/zenodo.17842188)
+
+## Citation
+
+Benjamin Brécheteau. (2025). CHRONON-1 v1.0.0 — Official Release. Zenodo. https://doi.org/10.5281/zenodo.17842188
+
 # CHRONON Project
 
 ## Description
