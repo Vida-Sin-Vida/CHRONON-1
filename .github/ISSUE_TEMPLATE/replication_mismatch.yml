@@ -1,0 +1,12 @@
+name: Replication mismatch
+description: "I ran the pipeline and got different outputs"
+body:
+  - type: textarea
+    attributes:
+      label: What command did you run?
+  - type: textarea
+    attributes:
+      label: Your environment (OS, Python, commit hash)
+  - type: textarea
+    attributes:
+      label: Expected vs observed hashes

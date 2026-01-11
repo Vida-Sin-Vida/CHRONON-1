@@ -1,0 +1,67 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.10", "3.11", "3.12"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Lint
+        run: |
+          python -m pip install ruff
+          ruff check .
+
+      - name: Tests
+        run: |
+          pytest -q
+
+      - name: Verify CLI Entrypoint
+        run: |
+          chronon1 --help
+
+      - name: Reproduce toy run
+        run: |
+          chronon1 reproduce --config configs/toy.yml
+
+      - name: Verify Golden Checksum (Reproducibility Proof)
+        shell: bash
+        run: |
+          # Read golden checksum
+          GOLDEN=$(cat tests/golden/toy_checksums.sha256 | awk '{print $1}')
+          # Read current checksum
+          CURRENT=$(cat reports/checksums.sha256 | awk '{print $1}')
+          
+          echo "Golden:  $GOLDEN"
+          echo "Current: $CURRENT"
+          
+          if [ "$GOLDEN" != "$CURRENT" ]; then
+            echo "::error::Determinism failure! Results hash does not match golden record."
+            exit 1
+          else
+            echo "Determinism verified."
+          fi
+
+      - name: Upload reports
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.python == '3.11' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports-${{ matrix.os }}-py${{ matrix.python }}
+          path: reports/

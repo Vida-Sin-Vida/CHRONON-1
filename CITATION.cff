@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it."
+title: "CHRONON-1"
+authors:
+  - family-names: "Brécheteau"
+    given-names: "Benjamin"
+version: 1.0.0
+date-released: "2026-01-11"
+license: "MIT"

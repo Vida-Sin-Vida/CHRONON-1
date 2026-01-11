@@ -1,0 +1,9 @@
+name: Methodology Challenge
+description: "Question or challenge regarding the scientific protocol"
+body:
+  - type: textarea
+    attributes:
+      label: Theoretical basis
+  - type: textarea
+    attributes:
+      label: Proposed alternative

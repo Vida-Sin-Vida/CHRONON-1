@@ -1,0 +1,11 @@
+seed: 123
+out_dir: reports
+dataset:
+  kind: toy
+  n: 500
+  eps: 0.001
+analysis:
+  hac: newey_west
+  alpha: 0.05
+  bootstrap: true
+  n_boot: 1000

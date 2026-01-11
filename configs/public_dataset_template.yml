@@ -1,0 +1,9 @@
+seed: 123
+out_dir: reports
+dataset:
+  kind: external
+  path: data/EXTERNAL/your_dataset.csv
+  sha256: "PUT_EXPECTED_SHA256_HERE"
+analysis:
+  hac: newey_west
+  alpha: 0.05

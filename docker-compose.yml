@@ -1,0 +1,5 @@
+services:
+  chronon1:
+    build: .
+    volumes:
+      - ./reports:/app/reports
