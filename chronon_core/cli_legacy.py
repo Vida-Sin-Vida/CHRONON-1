@@ -1,8 +1,6 @@
 import argparse
-import argparse
 import logging
 import pandas as pd
-import numpy as np
 from chronon_core import io, preprocess, windowing, stats, simulator
 
 def load_config(config_path):
