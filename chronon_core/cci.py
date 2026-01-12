@@ -22,7 +22,7 @@ class ConsistencyIndex:
             k = abs(kurtosis(residuals))
             norm_penalty = min(0.3, (s/2.0 + k/5.0) * 0.1)
             score_norm = max(0.0, 0.3 - norm_penalty)
-        except:
+        except Exception:
             score_norm = 0.15
             
         details['Normality'] = score_norm
@@ -38,9 +38,12 @@ class ConsistencyIndex:
         
         # 4. Significance (Max 0.2)
         score_sig = 0.0
-        if pval_slope < 0.001: score_sig = 0.2
-        elif pval_slope < 0.01: score_sig = 0.15
-        elif pval_slope < 0.05: score_sig = 0.1
+        if pval_slope < 0.001:
+            score_sig = 0.2
+        elif pval_slope < 0.01:
+            score_sig = 0.15
+        elif pval_slope < 0.05:
+            score_sig = 0.1
         details['Significance'] = score_sig
         
         total_score = score_norm + score_stab + score_n + score_sig

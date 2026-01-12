@@ -177,19 +177,19 @@ def analyze_with_fallback(X, Y, sigma_Y, sigma_X=None, **kwargs):
 def compute_andrews_bandwidth(residuals):
     """Auto-bandwidth L for HAC."""
     T = len(residuals)
-    if T == 0: return 0
+    if T == 0:
+        return 0
     L = np.floor(4 * (T / 100)**(2/9))
     return int(L)
 
 def newey_west_se(X, residuals, bandwidth):
     """Newey-West HAC standard errors."""
-    n = len(residuals)
     XT_e = X.T * residuals
     S = XT_e @ XT_e.T
     
-    for l in range(1, bandwidth + 1):
-        w_l = 1.0 - l / (bandwidth + 1.0)
-        Gamma_l = XT_e[:, l:] @ XT_e[:, :-l].T
+    for lag in range(1, bandwidth + 1):
+        w_l = 1.0 - lag / (bandwidth + 1.0)
+        Gamma_l = XT_e[:, lag:] @ XT_e[:, :-lag].T
         S += w_l * (Gamma_l + Gamma_l.T)
         
     try:

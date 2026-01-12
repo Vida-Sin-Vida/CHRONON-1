@@ -4,7 +4,6 @@
 # Dev     : Brécheteau.B
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-import numpy as np
 from app.gui.translations import TRANSLATIONS
 
 class ScientificInterpreter:
@@ -60,7 +59,8 @@ class ScientificInterpreter:
         res_diag = stats.get('diagnostics', {})
         diag_problems = []
         for k, v in res_diag.items():
-            if v.get('verdict') == "FAIL": diag_problems.append(k)
+            if v.get('verdict') == "FAIL":
+                diag_problems.append(k)
         
         diag_txt = t['DIAG_OK'] if not diag_problems else f"{t['DIAG_WARN']}{', '.join(diag_problems)}."
         rec_txt = t['REC_PUBLISH'] if result['signal_strength'] in ['STRONG', 'WEAK'] and not diag_problems else t['REC_CHECK']

@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 from scipy import stats
 
@@ -49,6 +48,8 @@ class RunComparator:
 
     def _extract_reg(self, run_data):
         # Helper to find regression dict
-        if 'regression' in run_data: return run_data['regression']
-        if 'slope' in run_data: return run_data
+        if 'regression' in run_data:
+            return run_data['regression']
+        if 'slope' in run_data:
+            return run_data
         return {}

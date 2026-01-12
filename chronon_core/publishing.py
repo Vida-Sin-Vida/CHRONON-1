@@ -19,7 +19,8 @@ class PublicationChecker:
             'pass': passed,
             'msg': f"N={n} (Recommended > 30)"
         }
-        if not passed: passed_all = False
+        if not passed:
+            passed_all = False
         
         # 2. QC Status
         passed = (qc_status == "PASS")
@@ -27,7 +28,8 @@ class PublicationChecker:
             'pass': passed,
             'msg': f"Status is {qc_status}"
         }
-        if not passed: passed_all = False
+        if not passed:
+            passed_all = False
         
         # 3. CCI Score
         # Strict for publication
@@ -36,7 +38,8 @@ class PublicationChecker:
             'pass': passed,
             'msg': f"Score={cci_score:.2f} (Target > 0.7)"
         }
-        if not passed: passed_all = False
+        if not passed:
+            passed_all = False
         
         # 4. Statistical Significance (Warning only)
         # We can publish null results, so this is just informational
@@ -62,7 +65,8 @@ class PublicationChecker:
             'pass': passed,
             'msg': msg
         }
-        if not passed: passed_all = False
+        if not passed:
+            passed_all = False
         
         # 6. StdErr Constraint
         # Ensure error isn't infinite or zero
@@ -72,6 +76,7 @@ class PublicationChecker:
             'pass': passed,
             'msg': "Valid finite error" if passed else "Invalid error"
         }
-        if not passed: passed_all = False
+        if not passed:
+            passed_all = False
 
         return passed_all, checks

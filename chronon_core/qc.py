@@ -4,7 +4,7 @@
 # Dev     : Brécheteau.B
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-import numpy as np
+
 
 class QualityControl:
     """

@@ -1,6 +1,4 @@
-import numpy as np
-import pandas as pd
-import logging
+
 
 C_LIGHT = 299792458.0
 
@@ -86,7 +84,7 @@ def compute_variables(df):
     # If applied=True, we assume y_frac is already corrected. If False, we apply it.
     
     y_meas = df['y_frac'].copy()
-    mask_not_applied = (df['sagnac_applied'] == 0) | (df['sagnac_applied'] == False)
+    mask_not_applied = (df['sagnac_applied'] == 0) | (~df['sagnac_applied'])
     # If sagnac_value is fraction dy/y, we subtract it from y_frac to get 'pure' GR signal?
     # Or is it a shift that mimics GR?
     # Standard: y_total = y_GR + y_Sagnac + ...

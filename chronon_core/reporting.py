@@ -29,7 +29,6 @@ class ReportGenerator:
         COLOR_PRIMARY = "#0B2240"
         COLOR_ACCENT = "#1F6AA5"
         COLOR_SUCCESS = "#10B981"
-        COLOR_FAIL = "#EF4444"
         COLOR_WARNING = "#F59E0B"
         
         epsilon = stats_results.get('slope', 0.0)
@@ -150,7 +149,8 @@ class ReportGenerator:
                 d_table.set_fontsize(10)
                 d_table.scale(1, 1.5)
                 for (row, col), cell in d_table.get_celld().items():
-                    if row == 0: cell.set_text_props(color='white', weight='bold')
+                    if row == 0:
+                        cell.set_text_props(color='white', weight='bold')
             
             # Residuals Histogram
             residuals = stats_results.get('residuals')

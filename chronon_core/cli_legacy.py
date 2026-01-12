@@ -1,10 +1,9 @@
 import argparse
-import sys
-import os
+import argparse
 import logging
 import pandas as pd
 import numpy as np
-from chronon_core import io, preprocess, windowing, stats, simulator, ablations, blinding, ledger
+from chronon_core import io, preprocess, windowing, stats, simulator
 
 def load_config(config_path):
     try:
@@ -96,7 +95,7 @@ def cmd_analyze(args):
     # Filter valid sigmas
     valid = (df['sigma_X'] > 0) & (df['sigma_Y'] > 0)
     if valid.any():
-        lam = np.mean(df.loc[valid, 'sigma_Y']**2 / df.loc[valid, 'sigma_X']**2)
+        # lam = np.mean(df.loc[valid, 'sigma_Y']**2 / df.loc[valid, 'sigma_X']**2)
         # Assuming fixed lambda Deming? Or WTLS.
         # Calling our WTLS function which assumes we pass arrays
         res_dem = stats.fit_deming_wtls(X, Y, df['sigma_X'].values, df['sigma_Y'].values)

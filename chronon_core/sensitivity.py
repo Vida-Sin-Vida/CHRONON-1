@@ -14,7 +14,8 @@ class SensitivityAnalyzer:
         Sxx = sum((x - mean(x))^2) approx N * var(x)
         x_spread: Standard deviation of X (Delta_h) or roughly (Max-Min)/sqr(12)
         """
-        if n <= 2: return float('inf')
+        if n <= 2:
+            return float('inf')
         
         # Degrees of freedom
         df = n - 2
@@ -39,7 +40,8 @@ class SensitivityAnalyzer:
         """
         Calculates statistical power for a specific true slope.
         """
-        if n <= 2: return 0.0
+        if n <= 2:
+            return 0.0
         
         df = n - 2
         sxx = (n - 1) * (x_spread ** 2)
@@ -57,7 +59,7 @@ class SensitivityAnalyzer:
         # Using non-central t distribution 'nct'
         try:
             power = 1 - stats.nct.cdf(t_crit, df, nc=delta) + stats.nct.cdf(-t_crit, df, nc=delta)
-        except:
+        except Exception:
             # Fallback to normal approx
             power = 1 - stats.norm.cdf(t_crit - delta) + stats.norm.cdf(-t_crit - delta)
             

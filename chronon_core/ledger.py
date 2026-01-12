@@ -62,7 +62,8 @@ class Ledger:
                     with open(filepath, 'rb') as f:
                         while True:
                             data = f.read(65536)
-                            if not data: break
+                            if not data:
+                                break
                             sha.update(data)
         return sha.hexdigest()
 

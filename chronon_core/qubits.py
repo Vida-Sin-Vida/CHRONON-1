@@ -31,7 +31,8 @@ class QubitAnalysis:
             
         x = np.array(x)
         y = np.array(y)
-        if y_err is None: y_err = np.ones_like(y)
+        if y_err is None:
+            y_err = np.ones_like(y)
         
         results = {
             'valid': True,
@@ -47,7 +48,7 @@ class QubitAnalysis:
                 p0 = [np.mean(y), 0.0]
                 try:
                     popt, pcov = curve_fit(exponential, x, y, sigma=y_err, p0=p0, maxfev=2000)
-                except:
+                except Exception:
                      popt = [np.mean(y), 0.0]
                      pcov = np.diag([np.inf, np.inf])
 
@@ -81,7 +82,8 @@ class QubitAnalysis:
                     else:
                          pb, _ = curve_fit(linear, x[idxs], y[idxs])
                     betas.append(pb[1])
-                except: pass
+                except Exception:
+                    pass
             
             if betas:
                 results['ci_beta_95'] = np.percentile(betas, [2.5, 97.5])
