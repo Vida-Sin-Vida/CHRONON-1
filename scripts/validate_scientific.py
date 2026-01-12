@@ -10,7 +10,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from chronon_core.stats import analyze_with_fallback
 from chronon_core.ledger import Ledger
-from chronon_core.simulator import PowerSimulator
 
 class ValidationSuite:
     def __init__(self, output_dir="validation_results"):

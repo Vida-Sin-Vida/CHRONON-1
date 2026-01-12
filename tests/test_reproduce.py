@@ -1,5 +1,4 @@
 import os
-import pytest
 from chronon_core.reproduce import run_reproduce
 
 def test_reproduce_creates_reports(tmp_path):

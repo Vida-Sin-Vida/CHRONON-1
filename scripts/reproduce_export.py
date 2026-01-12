@@ -45,7 +45,8 @@ def verify_reproducibility(ledger_dir="validation_results"):
     import hashlib
     
     for i in range(len(df_ledger) - sample_size, len(df_ledger)):
-        if i < 0: continue
+        if i < 0:
+            continue
         
         row = df_ledger.iloc[i]
         json_file = row['json_path']
@@ -73,7 +74,7 @@ def verify_reproducibility(ledger_dir="validation_results"):
                 print(f"Got     : {recalc_hash}")
                 failed_count += 1
 
-    print(f"\nVerification Results:")
+    print("\nVerification Results:")
     print(f"Verified : {verified_count}")
     print(f"Failed   : {failed_count}")
     

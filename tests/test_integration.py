@@ -18,7 +18,7 @@ class TestEndToEnd(unittest.TestCase):
     def tearDown(self):
         try:
             shutil.rmtree(self.test_dir)
-        except:
+        except Exception:
             pass
 
     def test_full_pipeline_flow(self):

@@ -38,14 +38,9 @@ class TestStatsEdgeCases(unittest.TestCase):
         # Current numpy/linalg behavior with nan is usually nan.
         try:
             res = calculate_slope_epsilon_phi(X, Y, sigma_Y)
-            is_nan_res = np.isnan(res['slope'])
+            np.isnan(res['slope'])
         except Exception:
-            is_nan_res = True # Treated as "handled" if it raises specific error, but we prefer result
-            
-        # We accept either specific error or NaN result, but NOT a crash that stops pipeline unhandled.
-        # Since stats.py doesn't have explicit Nan check, it likely returns NaN.
-        # We might add a filter in future, for now verify it doesn't SEGFAULT or something crazy.
-        pass
+            pass
 
     def test_zero_uncertainty(self):
         """Test behavior when sigma_Y is 0 (or near zero)"""

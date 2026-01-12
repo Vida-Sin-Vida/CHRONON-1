@@ -1,5 +1,4 @@
 import yaml
-import pytest
 
 def test_config_structure(tmp_path):
     cfg_content = """
