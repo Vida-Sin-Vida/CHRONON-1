@@ -28,6 +28,13 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest", "ruff", "mypy"]
+repro = [
+  "numpy==2.2.6",
+  "pandas==2.2.3",
+  "scipy==1.16.0",
+  "statsmodels==0.14.6",
+  "pyyaml==6.0.3",
+]
 
 [project.scripts]
 chronon1 = "chronon_core.cli:main"

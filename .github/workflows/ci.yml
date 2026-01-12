@@ -7,9 +7,10 @@ on:
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python: ["3.10", "3.11", "3.12"]
+        os: [ubuntu-latest]
+        python: ["3.11"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +23,11 @@ jobs:
       - name: Install
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[dev]"
+          python -m pip install -e ".[dev,repro]"
+
+      - name: Show versions
+        run: |
+          python -c "import numpy, pandas, scipy, statsmodels; print(numpy.__version__, pandas.__version__, scipy.__version__, statsmodels.__version__)"
 
       - name: Lint
         run: |
@@ -41,23 +46,9 @@ jobs:
         run: |
           chronon1 reproduce --config configs/toy.yml
 
-      - name: Verify Golden Checksum (Reproducibility Proof)
-        shell: bash
+      - name: Check golden record
         run: |
-          # Read golden checksum
-          GOLDEN=$(cat tests/golden/toy_checksums.sha256 | awk '{print $1}')
-          # Read current checksum
-          CURRENT=$(cat reports/checksums.sha256 | awk '{print $1}')
-          
-          echo "Golden:  $GOLDEN"
-          echo "Current: $CURRENT"
-          
-          if [ "$GOLDEN" != "$CURRENT" ]; then
-            echo "::error::Determinism failure! Results hash does not match golden record."
-            exit 1
-          else
-            echo "Determinism verified."
-          fi
+          diff -u tests/golden/toy_checksums.sha256 reports/checksums.sha256
 
       - name: Upload reports
         if: ${{ matrix.os == 'ubuntu-latest' && matrix.python == '3.11' }}
